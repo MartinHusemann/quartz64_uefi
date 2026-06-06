@@ -76,8 +76,8 @@ Vop2SetMode (
     )
 {
     UINT32 Val;
-    UINT32 HSyncLen, HActSt, HActEnd, HBackPorch;
-    UINT32 VSyncLen, VActSt, VActEnd, VBackPorch;
+    UINT32 HSyncLen, HActSt, HActEnd;
+    UINT32 VSyncLen, VActSt, VActEnd;
     UINTN Rate;
 
     mCurrentTimings = &mPreferredTimings;
@@ -115,11 +115,9 @@ Vop2SetMode (
 
     /* Setup post-process timings */
     HSyncLen = mCurrentTimings->HSyncEnd - mCurrentTimings->HSyncStart;
-    HBackPorch = mCurrentTimings->HTotal - mCurrentTimings->HSyncEnd;
     HActSt = mCurrentTimings->HTotal - mCurrentTimings->HSyncStart;
     HActEnd = HActSt + mCurrentTimings->HDisplay;
     VSyncLen = mCurrentTimings->VSyncEnd - mCurrentTimings->VSyncStart;
-    VBackPorch = mCurrentTimings->VTotal - mCurrentTimings->VSyncEnd;
     VActSt = mCurrentTimings->VTotal - mCurrentTimings->VSyncStart;
     VActEnd = VActSt + mCurrentTimings->VDisplay;
 
