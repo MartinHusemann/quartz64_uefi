@@ -38,3 +38,8 @@ clean:
 	rm -f *.itb
 	rm -f .uefitools_done
 	rm -f *_EFI.img *_EFI.img.gz
+
+.PHONY: clobber
+clobber:
+	git clean -xf
+	cd edk2 && git clean -xf
