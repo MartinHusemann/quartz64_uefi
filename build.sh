@@ -11,7 +11,7 @@ shift
 
 export WORKSPACE="$PWD"
 export PACKAGES_PATH=$PWD/edk2:$PWD/edk2-rockchip
-export GCC5_AARCH64_PREFIX=aarch64-linux-gnu-
+export GCC_AARCH64_PREFIX=aarch64-linux-gnu-
 
 TRUST_INI=RK3568TRUST.ini
 MINIALL_INI=RK3568MINIALL.ini
@@ -33,7 +33,7 @@ build_uefi() {
 	vendor=$1
 	board=$2
 	echo " => Building UEFI"
-	build -n $(getconf _NPROCESSORS_ONLN) -b ${RKUEFIBUILDTYPE} -a AARCH64 -t GCC5 \
+	build -n $(getconf _NPROCESSORS_ONLN) -b ${RKUEFIBUILDTYPE} -a AARCH64 -t GCC \
 	    -D FIRMWARE_VER="${FIRMWARE_VER}" \
 	    -p Platform/${vendor}/${board}/${board}.dsc
 }
@@ -73,7 +73,7 @@ build_fit() {
 	./scripts/extractbl31.py ${RKBIN}/${BL31}
 	cat uefi.its | sed "s,@BOARDTYPE@,${type},g" > ${board_upper}_EFI.its
 	./${RKBIN}/tools/mkimage -f ${board_upper}_EFI.its -E ${board_upper}_EFI.itb
-	dd if=Build/${board}/${RKUEFIBUILDTYPE}_GCC5/FV/RK356X_EFI.fd of=${board_upper}_EFI.itb bs=512 seek=$((1024 * 1024 / 512))
+	dd if=Build/${board}/${RKUEFIBUILDTYPE}_GCC/FV/RK356X_EFI.fd of=${board_upper}_EFI.itb bs=512 seek=$((1024 * 1024 / 512))
 	rm -f bl31_0x*.bin ${board_upper}_EFI.its
 }
 
