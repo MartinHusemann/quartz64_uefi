@@ -1,0 +1,52 @@
+#/** @file
+#
+#  RK3588 GMAC initializer
+#
+#  Copyright (c) 2023-2025, Mario Bălănică <mariobalanica02@gmail.com>
+#
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+#**/
+
+[Defines]
+  INF_VERSION                    = 0x00010019
+  BASE_NAME                      = GmacPlatformDxe
+  FILE_GUID                      = e08592c7-55f6-4f90-be56-327356aa1462
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = GmacPlatformDxeInitialize
+
+[Sources.common]
+  GmacPlatformDxe.c
+  RealtekPhy.c
+  MotorcommPhy.c
+
+[Packages]
+  CryptoPkg/CryptoPkg.dec
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  NetworkPkg/NetworkPkg.dec
+  Silicon/Rockchip/Rk356x/Rk356x.dec
+  Silicon/Synopsys/DesignWare/DesignWarePkg.dec
+
+[LibraryClasses]
+  BaseCryptLib
+  DebugLib
+  DevicePathLib
+  IoLib
+  NetLib
+  OtpLib
+  TimerLib
+  UefiBootServicesTableLib
+  UefiDriverEntryPoint
+
+[Protocols]
+  gDwcEqosPlatformDeviceProtocolGuid
+  gEfiDevicePathProtocolGuid
+
+[Pcd]
+  gRk356xTokenSpaceGuid.PcdMac0Status
+  gRk356xTokenSpaceGuid.PcdMac1Status
+
+[Depex]
+  TRUE

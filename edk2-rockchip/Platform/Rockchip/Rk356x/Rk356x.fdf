@@ -26,11 +26,11 @@
 
 [FD.RK356X_EFI]
 BaseAddress   = 0x00A00000|gArmTokenSpaceGuid.PcdFdBaseAddress
-Size          = 0x00100000|gArmTokenSpaceGuid.PcdFdSize
+Size          = 0x00200000|gArmTokenSpaceGuid.PcdFdSize
 ErasePolarity = 1
 
 BlockSize     = 0x00001000|gRk356xTokenSpaceGuid.PcdFirmwareBlockSize
-NumBlocks     = 0x100
+NumBlocks     = 0x200
 
 ################################################################################
 #
@@ -51,21 +51,21 @@ NumBlocks     = 0x100
 #
 # UEFI image
 #
-0x00000000|0x000E0000
+0x00000000|0x001E0000
 gArmTokenSpaceGuid.PcdFvBaseAddress|gArmTokenSpaceGuid.PcdFvSize
 FV = FVMAIN_COMPACT
 
 #
 # Variables (0x20000 overall).
 #
-# 0x00ae0000 - 0x00aedfff EFI_FIRMWARE_VOLUME_HEADER
-# 0x00aee000 - 0x00aeefff Event log
-# 0x00aef000 - 0x00aeffff EFI_FAULT_TOLERANT_WORKING_BLOCK_HEADER-
-# 0x00af0000 - 0x00afffff Data
+# 0x001e0000 - 0x00aedfff EFI_FIRMWARE_VOLUME_HEADER
+# 0x001ee000 - 0x00aeefff Event log
+# 0x001ef000 - 0x00aeffff EFI_FAULT_TOLERANT_WORKING_BLOCK_HEADER-
+# 0x001f0000 - 0x00afffff Data
 #
 
 # NV_VARIABLE_STORE
-0x000e0000|0x0000e000
+0x001e0000|0x0000e000
 gRk356xTokenSpaceGuid.PcdNvStorageVariableBase|gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageVariableSize
 
 DATA = {
@@ -108,11 +108,11 @@ DATA = {
 }
 
 # NV_EVENT_LOG
-0x000ee000|0x00001000
+0x001ee000|0x00001000
 gRk356xTokenSpaceGuid.PcdNvStorageEventLogBase|gRk356xTokenSpaceGuid.PcdNvStorageEventLogSize
 
 # NV_FTW_WORKING header
-0x000ef000|0x00001000
+0x001ef000|0x00001000
 gRk356xTokenSpaceGuid.PcdNvStorageFtwWorkingBase|gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwWorkingSize
 
 DATA = {
@@ -127,7 +127,7 @@ DATA = {
 }
 
 # NV_FTW_WORKING data
-0x000f0000|0x00010000
+0x001f0000|0x00010000
 gRk356xTokenSpaceGuid.PcdNvStorageFtwSpareBase|gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwSpareSize
 
 
@@ -277,6 +277,13 @@ READ_LOCK_STATUS   = TRUE
   INF MdeModulePkg/Bus/Scsi/ScsiBusDxe/ScsiBusDxe.inf
   INF MdeModulePkg/Bus/Scsi/ScsiDiskDxe/ScsiDiskDxe.inf
   INF Silicon/Rockchip/Rk356x/Drivers/SataDxe/SataDxe.inf
+
+  #
+  # Networking stack
+  #
+!include NetworkPkg/Network.fdf.inc
+  INF Silicon/Rockchip/Rk356x/Drivers/GmacPlatformDxe/GmacPlatformDxe.inf
+  INF Silicon/Synopsys/DesignWare/Drivers/DwcEqosSnpDxe/DwcEqosSnpDxe.inf
 
   #
   # TRNG Support

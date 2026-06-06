@@ -1,0 +1,22 @@
+#/** @file
+# Framework Module Development Environment Industry Standards
+#
+# This Package provides headers and libraries that conform to EFI/PI Industry standards.
+# Copyright (c) 2007-2021, Intel Corporation. All rights reserved.
+# Copyright (c) 2012-2014, ARM Ltd. All rights reserved.
+# Copyright (c) 2018, Linaro. All rights reserved.
+#
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#**/
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010019
+  PACKAGE_NAME                   = DesignWarePkg
+  PACKAGE_GUID                   = e73097ce-1fe2-41a6-a930-3136bc6d23ef
+  PACKAGE_VERSION                = 0.1
+
+[Includes]
+  Include
+
+[Protocols.common]
+  gDwcEqosPlatformDeviceProtocolGuid = { 0x60975136, 0x4601, 0x41b3, { 0xbf, 0x9a, 0x90, 0xe9, 0x59, 0xfc, 0xb0, 0x02 } }

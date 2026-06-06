@@ -23,7 +23,7 @@
   gConfigDxeFormSetGuid = {0xCD7CC258, 0x31DB, 0x22E6, {0x9F, 0x22, 0x63, 0xB0, 0xB8, 0xEE, 0xD6, 0xB5}}
 
 [PcdsFixedAtBuild.common]
-  gRk356xTokenSpaceGuid.PcdFdtBaseAddress|0x00B00000|UINT64|0x00000001
+  gRk356xTokenSpaceGuid.PcdFdtBaseAddress|0x00C00000|UINT64|0x00000001
   gRk356xTokenSpaceGuid.PcdFdtSize|0x10000|UINT32|0x00000002
   gRk356xTokenSpaceGuid.PcdTfaBaseAddress|0x00000000|UINT64|0x00000003
   gRk356xTokenSpaceGuid.PcdTfaSize|0x00A00000|UINT32|0x00000004
