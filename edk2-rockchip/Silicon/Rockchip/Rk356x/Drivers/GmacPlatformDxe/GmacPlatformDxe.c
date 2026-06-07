@@ -392,6 +392,7 @@ GmacPlatformDxeInitialize (
     Gmac->EqosPlatform.GetConfig         = GmacPlatformGetConfig;
     Gmac->EqosPlatform.SetInterfaceSpeed = GmacPlatformSetInterfaceSpeed;
 
+    CopyMem (&Gmac->EqosPlatform.MacAddress, &MacAddress, NET_ETHER_ADDR_LEN);
     /* Last octet is even for the first EQOS instance and odd for the second. */
     if (Count == 0) {
       Gmac->EqosPlatform.MacAddress.Addr[5] &= ~1;
@@ -400,8 +401,6 @@ GmacPlatformDxeInitialize (
       Gmac->EqosPlatform.MacAddress.Addr[5] |= 1;
     }
     Count++;
-
-    CopyMem (&Gmac->EqosPlatform.MacAddress, &MacAddress, NET_ETHER_ADDR_LEN);
 
     DEBUG ((
       DEBUG_INFO,
