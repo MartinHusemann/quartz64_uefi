@@ -6,7 +6,7 @@ The script is NetBSD specific due to the tools it uses (gpt(8) and dkctl(8)), an
 
 The overall method could be ported to Linux or other systems easily.
 
-The basic idea is to extract the relevant parts of the EFI image (idblock.bin, ${board}_EFI.itb), clear the old contents of the three target partitions "loader", "uboot" and "env", and then write the extract binary new content to the partitions on the eMMC.
+The basic idea is to extract the relevant parts of the EFI image (idblock.bin, ${board}_EFI.itb), clear the old contents of the three target partitions "loader", "uboot" and "env", and then write the extracted binary new content to the partitions on the eMMC.
 
 ## Running the script
 
