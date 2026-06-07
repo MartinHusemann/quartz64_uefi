@@ -18,19 +18,16 @@ Run the script like:
 
 ## First time eMMC firmware installation
 
-If the eMMC contents have not been updated to edk2 before, the script will complain and tell you to erase the old contents of the eMMC manually. This is a savety feature. Double check you are using the correct device!
+If the eMMC contents have not been updated to edk2 before, the script will complain and tell you to erase the old contents of the eMMC manually. This is a safety feature. Double check you are using the correct device!
 
-IF you are sure the device is correct, use:
+If you are sure the device is correct, use:
 
-    gpt destroy ld0
 
 to erase the old GPT on the eMMC and verify the result with
 
-    gpt show ld0
 
 which now should say:
 
-    GPT not found, displaying data from MBR.
 
 Erasing the GPT is only needed for the first time you install edk2 on the eMMC. Later updates will just work and re-use the existing GPT partitions.
 
